@@ -1,0 +1,5 @@
+# Distribution Binaries & Archives
+*.zip
+*.bak
+*~
+.DS_Store
