@@ -29,8 +29,8 @@ No coding or compiling needed! Download the pre-compiled binary files ready for 
 To prevent mass cloning and support ongoing feature development, each firmware installation is bound to your device's unique hardware MAC address.
 
 1. **Flash the firmware** onto your BW16 board and connect to its Wi-Fi hotspot:
-   * **SSID:** `BW16-Scanner-XXXX`
-   * **Password:** `12345678`
+   * **SSID:** `BW16-Scanner-XXXX` *(where XXXX is the last 4 characters of your MAC)*
+   * **Password:** None *(Open Network for instant, frictionless connection)*
 2. Open your browser and visit: **`http://192.168.1.1`**.
 3. The activation screen will display your unique **Device MAC** (e.g., `00:E0:4C:12:34:56`).
 4. Click **"Copy MAC"** and send it directly to Telegram:
@@ -82,7 +82,7 @@ To prevent mass cloning and support ongoing feature development, each firmware i
 1. Power up the BW16 with any USB adapter or power bank.
 2. On your phone or laptop, look for the Wi-Fi network:
    * **SSID:** `BW16-Scanner-XXXX` *(where XXXX is the last 4 characters of your MAC)*
-   * **Password:** `12345678`
+   * **Password:** None *(Open Wi-Fi)*
 3. Connect to the network.
 
 ---

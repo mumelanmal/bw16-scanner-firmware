@@ -1,56 +1,62 @@
-# Panduan Flashing Firmware BW16 Dual-Band Wi-Fi Analyzer
+# BW16 Dual-Band Wi-Fi Analyzer - Flashing & Setup Guide
 
-Dokumen ini adalah panduan lengkap bagi pembeli / pengguna untuk mengunggah (*flashing*) file biner `.bin` ke modul **Ai-Thinker BW16 (RTL8720DN)**.
-
----
-
-## 1. Persiapan Hardware
-1. Modul **Ai-Thinker BW16** (development board atau breakout board).
-2. Kabel Micro-USB / USB-C (pastikan kabel data, bukan hanya kabel charger daya).
-3. Komputer/Laptop (Windows, Linux, atau macOS).
+This guide provides step-by-step instructions for flashing the pre-compiled binary firmware to your **Ai-Thinker BW16 (Realtek RTL8720DN)** board.
 
 ---
 
-## 2. File Biner Firmware
-Paket firmware resmi terdiri dari file:
-* **`km0_km4_image2.bin`** *(Wajib)*: Program aplikasi utama BW16 Dual-Band Analyzer (offset alamat: `0x08006000` / `0x08004000` / standard image 2).
-* **`km0_boot_all.bin`** *(Opsional / Factory)*: Bootloader Cortex-M0.
-* **`km4_boot_all.bin`** *(Opsional / Factory)*: Bootloader Cortex-M33.
+## 1. Hardware Requirements
+1. **Ai-Thinker BW16 Board** (RTL8720DN module / breakout dev board).
+2. **USB Data Cable** (Micro-USB or Type-C; ensure it supports data transfer, not power-only).
+3. **Computer/Laptop** (Windows 10/11, Linux, or macOS).
 
 ---
 
-## 3. Langkah Flashing Menggunakan Image Tool (Windows / Linux)
-
-### Cara Memasukkan BW16 ke Mode Download / Burn:
-1. Hubungkan board BW16 ke USB komputer.
-2. Tahan tombol **Burn / Boot / Download** (tombol B).
-3. Sambil tetap menahan tombol Burn, tekan tombol **RST (Reset)** sekali.
-4. Lepaskan tombol Burn.
-5. Board sekarang berada di mode **UART Bootloader / Download Mode** (indikator LED hijau padam atau berkedip singkat).
-
-### Flashing via Ameba Image Tool:
-1. Unduh dan buka aplikasi **Ameba Image Tool** (disediakan oleh Realtek).
-2. Pilih nomor **COM Port** modul BW16 kamu.
-3. Atur Baudrate ke **115200** atau **1500000** (1.5M).
-4. Klik tab **Download**:
-   - Centang **Flash / Image 2**, pilih file `km0_km4_image2.bin`.
-   - Jika board dalam kondisi baru/kosong, masukkan juga bootloader `km0_boot_all.bin` dan `km4_boot_all.bin`.
-5. Klik tombol **Download** dan tunggu hingga proses mencapai 100%.
-6. Setelah selesai, tekan tombol **RST (Reset)** pada BW16.
+## 2. Firmware Binary Files
+This release package includes:
+* **`km0_km4_image2.bin`** *(Required)*: The main Dual-Band Wi-Fi Analyzer application firmware.
+* **`km0_boot_all.bin`** *(Optional / Factory)*: Cortex-M0 system bootloader.
+* **`km4_boot_all.bin`** *(Optional / Factory)*: Cortex-M33 application bootloader.
 
 ---
 
-## 4. Cara Menghubungkan & Mengakses Portal
-1. Setelah reboot, BW16 akan memancarkan hotspot Wi-Fi:
-   - **SSID:** `BW16-Scanner-XXXX` (XXXX adalah 4 digit terakhir MAC)
-   - **Password:** Tidak ada (Open Wi-Fi)
-2. Sambungkan HP atau Laptop kamu ke hotspot tersebut.
-3. Buka browser web (Chrome, Safari, Firefox), lalu buka alamat:
+## 3. Flashing Steps via Ameba Image Tool
+
+### Step A: Enter Download / Bootloader Mode
+1. Plug the BW16 board into your computer's USB port.
+2. **Press and hold** the **Burn** button (labeled `Burn` or `B`).
+3. While still holding **Burn**, press and release the **RST (Reset)** button once.
+4. **Release** the **Burn** button.
+5. The BW16 is now in **UART Bootloader / Download Mode** (the green LED will stay off or blink once).
+
+### Step B: Flash Firmware with Ameba Image Tool
+1. Open **Ameba Image Tool** (Windows utility provided by Realtek).
+2. Select your device's **COM Port** (e.g., `COM3`, `COM5`, or `/dev/ttyUSB0`).
+3. Set Baudrate to **`115200`** or **`1500000`** (1.5M for high-speed flashing).
+4. Navigate to the **Download** tab:
+   - Check **Image 2 (Flash)** and browse to select **`km0_km4_image2.bin`**.
+   - *(Optional - only needed if board flash is completely empty)*: Also select `km0_boot_all.bin` and `km4_boot_all.bin` into bootloader slots.
+5. Click **Download** and wait until the progress bar reaches **100% (Success)**.
+6. Once finished, press the **RST (Reset)** button on your BW16 to boot into normal operation.
+
+---
+
+## 4. Connecting & Accessing Dashboard
+1. After rebooting, the BW16 will broadcast its Wi-Fi Access Point:
+   - **SSID:** `BW16-Scanner-XXXX` *(where XXXX is the last 4 hex digits of your MAC)*
+   - **Password:** None (Open Network for instant, seamless connection)
+2. Connect your smartphone or laptop to `BW16-Scanner-XXXX`.
+3. Open any web browser (Chrome, Safari, Firefox, Edge) and navigate to:
    ```
    http://192.168.1.1
    ```
-4. Jika perangkat baru pertama kali dinyalakan, layar **Aktivasi Lisensi** akan muncul:
-   - Salin **Device MAC** yang tertera di layar.
-   - Kirimkan Device MAC tersebut ke penjual untuk mendapatkan kode aktivasi.
-   - Masukkan kode aktivasi dan klik **Aktivasi Sekarang**.
-5. Setelah teraktivasi, dashboard **BW16 Dual-Band Wi-Fi Analyzer** akan langsung terbuka dan siap digunakan!
+4. If this is your first time powering on:
+   - The **Device Activation** page will display your unique **Device MAC**.
+   - Copy your Device MAC and send it to our Telegram channel: **[@mumelanmal](https://t.me/mumelanmal)**.
+   - Enter your 16-character Lifetime Activation Key and click **"Activate Now"**.
+5. Once activated, your device is permanently unlocked and the full-featured **BW16 Dual-Band Wi-Fi Analyzer** dashboard will load immediately!
+
+---
+
+## 5. Support & Inquiries
+- **Telegram:** [@mumelanmal](https://t.me/mumelanmal)
+- **GitHub Repository:** [mumelanmal/bw16-scanner-firmware](https://github.com/mumelanmal/bw16-scanner-firmware)

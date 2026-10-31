@@ -54,7 +54,7 @@ Before flashing, your BW16 must be placed into **UART Download Mode**:
 
 1. Once rebooted, the BW16 will start broadcasting its own Wi-Fi Access Point:
    * **SSID:** `BW16-Scanner-XXXX` *(where XXXX is the last 4 digits of your device's MAC)*
-   * **Password:** `12345678`
+   * **Password:** None *(Open Network)*
 2. Connect your smartphone or laptop to `BW16-Scanner-XXXX`.
 3. Open your browser and navigate to:
    ```
